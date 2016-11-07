@@ -1,0 +1,36 @@
+//
+   Created by FIONA on 2016/10/30/030.
+
+extends ../layout-template
+
+block pageContent
+    ol.breadcrumb
+        li
+            a(href='/') 同学聚会相册
+        li
+            a(href='/#{stuName}/rename') #{stuName}相册重命名
+        a.btn.btn-primary.btn-xs(href='/',style='float:right;') 返回
+
+    form.form-horizontal
+        .form-group
+            span.sr-only(id='stu_name') #{stuName}
+            label(for="folder_name",class='.col-sm-3 col-xs-5 text-right') 相册新名称：
+            .col-sm-5.col-xs-12
+                input.form-control(id='folder_name' name='folder_name')
+
+    button.btn.btn-warning.col-sm-offset-6(id='rename_folder' data-toggle="modal" data-target="#renameInfo") 重命名
+
+    .modal.fade(id='renameInfo',tabindex='-1',role='dialog',aria-labelledby="myModalLabel",aria-hidden="true")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button(type='button' class='close close-modal')
+                        span(aria-hidden=true) &times;
+                        span.sr-only close
+                    h4.modal-title(id='newInfoLabel') 提示
+                .modal-body
+                    span(id='renameInfoContent') 正在处理数据
+                .modal-footer
+                    button(type="button" class="btn btn-default close-modal") 关闭
+
+    script(type='text/javascript' src='/js/script.js')

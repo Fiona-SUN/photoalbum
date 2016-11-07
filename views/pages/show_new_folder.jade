@@ -1,0 +1,36 @@
+//
+   Created by FIONA on 2016/10/28/028.
+
+extends ../layout-template
+
+block pageContent
+    ol.breadcrumb
+        li
+            a(href='/') 同学聚会相册
+        li
+            a(href='/newFolder') 新建相册
+        a.btn.btn-primary.btn-xs(href='/',style='float:right;') 返回
+
+    form.form-horizontal
+        .form-group
+            label(for="folder_name",class='.col-sm-3 col-xs-5 text-right') 相册名称：
+            .col-sm-5.col-xs-12
+                input.form-control(id='folder_name' name='folder_name')
+
+    button.btn.btn-warning.col-sm-offset-6(id='newFolder' data-toggle="modal" data-target="#newInfo") 新建相册
+
+    .modal.fade(id='newInfo',tabindex='-1',role='dialog',aria-labelledby="myModalLabel",aria-hidden="true")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button(type='button' class='close' data-dismiss="modal")
+                        span(aria-hidden=true) &times;
+                        span.sr-only close
+                    h4.modal-title(id='newInfoLabel') 提示
+                .modal-body
+                    span(id='newInfoContent') 正在处理数据
+                .modal-footer
+                    button(type="button" class="btn btn-default" data-dismiss="modal") 关闭
+
+    script(type='text/javascript' src='/js/script.js')
+

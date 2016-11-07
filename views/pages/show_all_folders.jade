@@ -1,0 +1,17 @@
+//
+   Created by FIONA on 2016/10/26/026.
+
+extends ../layout-template
+
+block pageContent
+    ol.breadcrumb
+        li
+            a(href='/') 同学聚会相册
+        a.btn.btn-warning.btn-xs(href='/newFolder',style='float:right;') 新建相册
+    .row
+        each item in folders
+            .col-xs-6.col-md-3
+                a.thumbnail(href='./#{item}')
+                    img(src='/images/folder.png' title='#{item}')
+                    .caption.text-center #{item}
+

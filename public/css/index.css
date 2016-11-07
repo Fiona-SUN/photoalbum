@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.close-pho{
+    margin-bottom: 10px;
+    opacity: 1;
+    font-size:20px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-right:5px;
+}
+.close-pho:hover{
+    color: #337ab7;
+}

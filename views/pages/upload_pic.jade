@@ -1,0 +1,45 @@
+//
+   Created by FIONA on 2016/10/27/027.
+
+extends ../layout-template
+
+block pageContent
+    ol.breadcrumb
+        li
+            a(href='/') 同学聚会相册
+        li
+            a(href='/upload') 上传照片
+        a.btn.btn-primary.btn-xs(href='/',style='float:right;') 返回
+    form.form-horizontal(enctype='multipart/form-data' id='postForm' method='post')
+        .form-group
+            label(for='stuName' style='margin-top:5px;').col-sm-3.col-xs-5.text-right 所属相册:
+            .col-sm-6.col-xs-12
+                select(id='stuName' name='stuName').form-control
+                    option(value='-1') ---请选择所存放的相册---
+                    each item in folders
+                        option(value='#{item}') #{item}
+        .form-group
+            label(for="desc",style='margin-top:5px;').col-sm-3.col-xs-5.text-right 照片描述:
+            .col-sm-6.col-xs-12
+                input(type="text" id='desc' name='desc').form-control
+        .form-group
+            label(for="upload_pic").col-sm-3.col-xs-5.text-right 上传照片:
+            .col-sm-6.col-xs-12
+                input(type='file',id='upload_pic',name='upload_pic')
+
+    button.btn.btn-success.col-sm-offset-4(id='postPho' data-toggle="modal" data-target="#postInfo") 上传照片
+
+    .modal.fade(id='postInfo',tabindex='-1',role='dialog',aria-labelledby="myModalLabel",aria-hidden="true")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button(type='button',class='close',data-dismiss='modal')
+                        span(aria-hidden=true) &times;
+                        span.sr-only close
+                    h4.modal-title(id='postInfoLabel' style='font-weight:bold;') 提示
+                .modal-body
+                    span(id='postInfoContent') 正在处理数据..
+                .modal-footer
+                    button(type="button" class="btn btn-default" data-dismiss="modal") 关闭
+
+    script(type='text/javascript' src='/js/script.js')

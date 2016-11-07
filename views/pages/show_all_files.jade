@@ -1,0 +1,39 @@
+//
+   Created by FIONA on 2016/10/26/026.
+
+extends ../layout-template
+
+block pageContent
+    ol.breadcrumb
+        li
+            a(href='/') 同学聚会相册
+        li
+            a(href='/#{stuName}' class='stuName' data-name='#{stuName}') #{stuName}的相册
+        a.btn.btn-primary.btn-xs(href='/',style='float:right;') 返回
+    h3.pull-left #{stuName}的相册
+    button.btn.btn-default.pull-right(id='remove_folder' data-toggle="modal" data-target="#removeInfo") 删除相册
+    a.btn.btn-default.pull-right(style='margin-right:10px;'  href='/#{stuName}/rename') 相册重命名
+    .clearfix
+    .row
+        each item in filesNum
+            .col-xs-6.col-md-3
+                span(class="glyphicon glyphicon-remove pull-right close-pho" data-img='/#{stuName}/#{item.photoTitle}' data-toggle="modal" data-target="#removeInfo" title="删除图片")
+                a.thumbnail.photo-part(href='/#{stuName}/#{item.photoTitle}')
+                    img(src='/pics/#{stuName}/#{item.photoTitle}' title='#{item.desc}')
+                    .caption.text-center #{item.desc}
+
+
+    .modal.fade(id='removeInfo',tabindex='-1',role='dialog',aria-labelledby="myModalLabel",aria-hidden="true")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button(type='button',class='close close-modal')
+                        span(aria-hidden=true) &times;
+                        span.sr-only close
+                    h4.modal-title(id='postInfoLabel' style='font-weight:bold;') 提示
+                .modal-body
+                    span(id='removeInfoContent') 正在处理数据..
+                .modal-footer
+                    button(type="button" class="btn btn-default close-modal") 关闭
+
+    script(type='text/javascript' src='/js/script.js')
